@@ -27,10 +27,10 @@ json_string = f.read()
 parsed_json = json.loads(json_string)
 
 #variables from JSON
-location = parsed_json['current_observation']['display_location']['full']
-temp_f = parsed_json['current_observation']['temp_f']
-current_condition = parsed_json['current_observation']['weather']
-rel_humidity = parsed_json['current_observation']['relative_humidity']
+location = str(parsed_json['current_observation']['display_location']['full'])
+temp_f = str(parsed_json['current_observation']['temp_f'])
+current_condition = str(parsed_json['current_observation']['weather'])
+rel_humidity = str(parsed_json['current_observation']['relative_humidity'])
 
 
 
@@ -55,6 +55,10 @@ for i in range(0,350):
         print "Current weather is %s in %s" % (current_condition, location)
         print "Current relative humidity is %s in %s" % (rel_humidity, location)
 
+
+        humidity = str(humidity)
+        temp = str(temp)
+        
 # Put at after each reading is done
         csv.write(",".join([timestamp, temp,temp_f, humidity, rel_humidity, current_condition, location]))
 

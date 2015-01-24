@@ -62,20 +62,6 @@ for i in range(0,350):
 # Put at after each reading is done
         csv.write(",".join([timestamp, temp,temp_f, humidity, rel_humidity, current_condition, location]))
 
-# Append the data in the spreadsheet, including a timestamp
-        try:
-                worksheet.append_row((datetime.datetime.now(), int_temp_f, temp_f, humidity, rel_humidity, current_condition, location))
-        except:
-                # Error appending data, most likely because credentials are stale.
-                # Null out the worksheet so a login is performed at the top of the loop.
-                print ('Append error, logging in again')
-                worksheet = None
-                time.sleep(FREQUENCY_SECONDS)
-                continue
-
-        # Wait 30 seconds before continuing
-        print ('Wrote a row to {0}').format(GDOCS_SPREADSHEET_NAME)
-        f.close()
         csv.close()
         time.sleep(FREQUENCY_SECONDS)
 

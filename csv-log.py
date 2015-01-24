@@ -46,8 +46,7 @@ for i in range(0,350):
                 time.sleep(2)
                 continue
          
-        timestamp = datetime.datetime.now()
-        timestamp = str(timestamp)
+        timestamp = str(datetime.datetime.now())
                 
         print (i)
         print ('Temperature: {0:0.1f} C').format(temp)

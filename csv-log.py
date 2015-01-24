@@ -3,6 +3,7 @@ import time
 import datetime
 import urllib2
 import json
+import csv
 
 import Adafruit_DHT
 
@@ -61,8 +62,7 @@ for i in range(0,350):
         
 # Put at after each reading is done
         csv.write(",".join([timestamp, temp,temp_f, humidity, rel_humidity, current_condition, location]))
-
-        csv.close()
+	csv.write("\n")
         time.sleep(FREQUENCY_SECONDS)
 
 
